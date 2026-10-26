@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.pyc
+venv/
+.venv/
+
+# Node
+node_modules/
+dist/
+
+# Secrets - NEVER commit these
+.env
+
+# Local data
+*.db
+qdrant_data/
+uploads/
+
+# Editor / OS
+.vscode/
+.DS_Store
+Thumbs.db
