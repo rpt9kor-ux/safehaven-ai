@@ -7,3 +7,5 @@ pyjwt
 email-validator
 python-multipart
 pypdf
+qdrant-client
+fastembed

@@ -14,6 +14,16 @@ class Settings(BaseSettings):
     upload_dir: str = "uploads"
     max_upload_mb: int = 20
 
+    # Vector database: empty qdrant_url = local folder mode; set it to use a Qdrant server
+    qdrant_url: str | None = None
+    qdrant_path: str = "qdrant_data"
+    qdrant_collection: str = "policy_chunks"
+
+    # Embedding model (384-dimension vectors)
+    embedding_model: str = "BAAI/bge-small-en-v1.5"
+    embedding_dim: int = 384
+    model_cache_dir: str = "models_cache"
+
     model_config = SettingsConfigDict(env_file=ENV_FILE_PATH)
 
 settings = Settings()
