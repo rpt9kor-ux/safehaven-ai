@@ -12,6 +12,7 @@ from app.models.document import AccessLevel, Document
 from app.models.user import User, UserRole
 from app.schemas.document import DocumentRead
 from app.services.pdf_processor import PDFProcessingError, process_pdf
+from app.services.vector_store import delete_document_chunks, index_chunks
 
 router = APIRouter(prefix="/documents", tags=["Documents"])
 
@@ -62,6 +63,20 @@ def upload_document(
         uploaded_by=admin.id,
     )
     db.add(document)
+    db.flush()  # assigns document.id without saving permanently yet
+
+    try:
+        index_chunks(document.id, document.title, document.access_level, chunks)
+    except Exception:
+        # Indexing failed: undo everything so the two stores never disagree
+        db.rollback()
+        delete_document_chunks(document.id)
+        path.unlink(missing_ok=True)
+        raise HTTPException(
+            status.HTTP_500_INTERNAL_SERVER_ERROR,
+            "Document could not be indexed. Please try again.",
+        )
+
     db.commit()
     db.refresh(document)
     return document
@@ -89,6 +104,7 @@ def delete_document(
     if document is None:
         raise HTTPException(status.HTTP_404_NOT_FOUND, "Document not found")
 
+    delete_document_chunks(document.id)  # remove vectors first
     (UPLOAD_DIR / document.stored_filename).unlink(missing_ok=True)
     db.delete(document)
     db.commit()
