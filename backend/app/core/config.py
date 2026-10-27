@@ -11,6 +11,8 @@ class Settings(BaseSettings):
     database_url: str = "sqlite:///./safehaven.db"
     secret_key: str  # no default on purpose: must come from .env
     access_token_expire_minutes: int = 60
+    upload_dir: str = "uploads"
+    max_upload_mb: int = 20
 
     model_config = SettingsConfigDict(env_file=ENV_FILE_PATH)
 

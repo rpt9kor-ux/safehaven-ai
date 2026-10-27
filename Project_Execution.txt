@@ -1,0 +1,30 @@
+1	Installed VS Code, Python, Node, Git (Docker pending)
+2	Created the project folder, Git repo, and GitHub push
+3	Built the FastAPI skeleton with a /health endpoint
+4	Wrote the project brief, layered backend structure, and contributing guide
+5	Added .env settings, the database connection, and the User table
+6	Built registration, login, password hashing, and JWT tokens
+7	Added role-based access control, admin endpoints, and the admin creation script
+8	Built PDF upload, page-by-page text extraction, chunking, and access levels 
+9	Embeddings and Qdrant (local mode): turn chunks into vectors and store them with page number and access level	FR-3
+10	Connect upload to indexing: index chunks on upload, remove them on delete	FR-3
+11	Semantic search with access filtering, so employees never retrieve HR-only chunks	FR-8
+12	RAG chat: send the best chunks to an LLM and return answers with citations like [Doc, Page 12]	FR-4, FR-5
+13	"I don't know" handling: refuse to guess when the answer isn't in the documents	FR-6
+14	Chat history: save conversations per user, with endpoints to list and delete them	FR-7
+15	Create the React app (Vite) and set up routing
+16	Login and registration pages, with token handling
+17	Chat interface showing answers and clickable citations
+18	Chat history sidebar
+19	Admin dashboard: upload, list, and delete documents, and manage user roles
+20	UI polish: loading states, error messages, and responsive layout
+21	Automated backend tests with pytest (auth, RBAC, chunking, access filtering)	NFR-4
+22	Code quality: linting with Ruff and a GitHub Actions CI pipeline	NFR-4
+23	Evaluation: a set of test questions to measure citation accuracy	Success metrics
+24	Final documentation: polished README, architecture diagram, screenshots, API docs	
+25	Demo: a short screen recording and CV bullet points
+
+D1	Switch SQLite to PostgreSQL and Qdrant local to the Qdrant server	
+D2	Write Dockerfiles for the backend and frontend	
+D3	Write docker-compose.yml so the whole stack starts with docker compose up	NFR-3
+D4	Update the README with Docker instructions

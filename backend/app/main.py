@@ -3,7 +3,7 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 
 from app import models  # noqa: F401  (registers the tables)
-from app.api import admin, auth, health
+from app.api import admin, auth, documents, health
 from app.core.config import settings
 from app.core.database import Base, engine
 
@@ -25,6 +25,7 @@ app = FastAPI(
 app.include_router(health.router)
 app.include_router(auth.router)
 app.include_router(admin.router)
+app.include_router(documents.router)
 
 
 @app.get("/", tags=["Root"])
