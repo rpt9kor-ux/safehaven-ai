@@ -1,4 +1,5 @@
 from datetime import datetime
+from app.models.user import UserRole
 
 from pydantic import BaseModel, ConfigDict, EmailStr, Field
 
@@ -23,3 +24,6 @@ class UserRead(BaseModel):
 class Token(BaseModel):
     access_token: str
     token_type: str = "bearer"
+
+class RoleUpdate(BaseModel):
+    role: UserRole
