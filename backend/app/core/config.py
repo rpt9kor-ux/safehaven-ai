@@ -26,4 +26,8 @@ class Settings(BaseSettings):
 
     model_config = SettingsConfigDict(env_file=ENV_FILE_PATH)
 
+    # LLM (Google Gemini free tier)
+    gemini_api_key: str | None = None
+    llm_model: str = "gemini-2.5-flash"
+
 settings = Settings()

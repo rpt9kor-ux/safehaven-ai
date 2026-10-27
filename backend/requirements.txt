@@ -9,3 +9,4 @@ python-multipart
 pypdf
 qdrant-client
 fastembed
+google-genai
