@@ -28,6 +28,6 @@ class Settings(BaseSettings):
 
     # LLM (Google Gemini free tier)
     gemini_api_key: str | None = None
-    llm_model: str = "gemini-2.5-flash"
+    llm_model: str = "gemini-3.8-flash"
 
 settings = Settings()
